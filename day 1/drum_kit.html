@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="style.css">
+
+	<title>Day 1 - Drum Kit</title>
+</head>
+<body>
+	<div class="flex-container">
+		<div class="keys">
+			<div data-key="65" class="key">
+				<kbd>A</kbd>
+			</div>
+			<div data-key="83" class="key">
+				<kbd>S</kbd>
+			</div>
+			<div data-key="68" class="key">
+				<kbd>D</kbd>
+			</div>
+			<div data-key="70" class="key">
+				<kbd>F</kbd>
+			</div>
+			<div data-key="71" class="key">
+				<kbd>G</kbd>
+			</div>
+			<div data-key="72" class="key">
+				<kbd>H</kbd>
+			</div>
+			<div data-key="74" class="key">
+				<kbd>J</kbd>
+			</div>
+			<div data-key="75" class="key">
+				<kbd>K</kbd>
+			</div>
+			<div data-key="76" class="key">
+				<kbd>L</kbd>
+			</div>
+
+		</div>
+	</div>
+
+<audio data-key="65" src="sounds/cowbell.mp3"></audio>
+<audio data-key="83" src="sounds/drum.mp3"></audio>
+<audio data-key="68"  src="sounds/hiconga.mp3"></audio>
+<audio data-key="70" src="sounds/lowconga.mp3"></audio>
+<audio data-key="71" src="sounds/platillo_c.mp3"></audio>
+<audio data-key="72" src="sounds/tamb.mp3"></audio>
+<audio data-key="74" src="sounds/cowbell.mp3"></audio>
+<audio data-key="75" src="sounds/drum.mp3"></audio>
+<audio data-key="76" src="sounds/platillo_c.mp3"></audio>
+
+
+<script>
+	window.addEventListener('keydown', function (e) {
+		//console.log(e.keyCode);
+		const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+		const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+		if (!audio) return;
+		audio.currentTime = 0;
+		audio.play();
+		key.classList.add('playing');
+
+		console.log(key);
+	});
+</script>
+</body>
+</html>
